@@ -4,12 +4,19 @@
             [compojure.route :as route]
             [clojure.java.io :as io]
             [ring.adapter.jetty :as jetty]
-            [environ.core :refer [env]]))
+            [environ.core :refer [env]])
+
+  (:use simbiotic-website.main-page))
 
 (defn splash []
   {:status 200
    :headers {"Content-Type" "text/plain"}
    :body (pr-str ["Hello" :from 'Travisty])})
+
+(defn splash []
+  {:status 302
+   :headers {"Content-Type" "text/html"}
+   :body visual})
 
 (defroutes app
            (GET "/" []

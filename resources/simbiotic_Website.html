@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+.myDivTag {
+	padding: 20px;
+	height: 124px;
+	width: 400px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+div.inline {  }
+
+#container
+{
+    height:50px;
+    width:100px;
+    position:relative;
+	float:left;
+}
+
+#image
+{   
+	z-index:1;
+    position:absolute;
+    left:0;
+    top:0;
+}
+#text
+{
+	z-index: 2;
+	position: absolute;
+	color: #ECF3FF;
+	font-size: 24px;
+	font-weight: bold;
+	left: 15px;
+	top: -15px;
+}
+</style>
+
+</head>
+
+<body bgcolor="#003333">
+<div class = "myDivTag">
+<div style="position:relative;right:50px;">
+<img src="images/symbiotic_logo_scaled.png" width="600" height="187" alt=""/>
+
+<div style="position:relative;right:-85px;top:-45px;"> 
+
+<a href="available_Games.html">
+<div id="container" style='-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;' 
+ unselectable='on'
+ onselectstart='return false;' 
+ onmousedown='return false;'>
+<img src="images/symbiotic_logo_button.png" alt="" width="100" height="50" id="image"/>
+<p id="text">Games</p>
+</div>
+</a>
+<div style = "float:left;height:50px;
+    width:200px;
+    position:relative;
+    
+    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none; "
+ unselectable='on'
+ onselectstart='return false;' 
+ onmousedown='return false;'> 
+    <img id="image" src="images/symbiotic_logo_button.png" width="140" height="50" alt=""/>
+<p id="text">Contact us</p>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
