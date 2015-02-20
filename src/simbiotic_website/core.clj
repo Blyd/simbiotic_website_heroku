@@ -21,6 +21,7 @@
 (defroutes app
            (GET "/" []
                 (splash))
+           (GET "/available_Games.html" [] (slurp (io/resource "available_Games.html")))
            (ANY "*" []
                 (route/not-found (slurp (io/resource "404.html")))))
 
