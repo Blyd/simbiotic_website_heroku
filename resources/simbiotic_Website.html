@@ -15,7 +15,7 @@
 }
 div.inline {  }
 
-#container
+.container
 {
     height:50px;
     width:100px;
@@ -23,14 +23,14 @@ div.inline {  }
 	float:left;
 }
 
-#image
+.image
 {   
 	z-index:1;
     position:absolute;
     left:0;
     top:0;
 }
-#text
+.text
 {
 	z-index: 2;
 	position: absolute;
@@ -40,24 +40,44 @@ div.inline {  }
 	left: 15px;
 	top: -15px;
 }
+.text-body
+{
+
+    color: #ECF3FF;
+    font-size: 24px;
+    font-weight: bold;
+
+    padding: 20px;
+    height: 124px;
+    width: 800px;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
+
+p
+{
+    text-align: center;
+}
 </style>
 
 </head>
 
 <body bgcolor="#003333">
-<div class = "myDivTag">
+<div class = "myDivTag" id="text-body">
 <div style="position:relative;right:50px;">
-<img src="symbiotic_logo_scaled.png" width="600" height="187" alt=""/>
+<img src="https://raw.githubusercontent.com/Blyd/simbiotic_website_heroku/master/resources/images/symbiotic_logo_scaled.png" width="600" height="187" alt=""/>
 
 <div style="position:relative;right:-85px;top:-45px;"> 
 
 <a href="available_Games.html">
-<div id="container" style='-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;' 
+<div class="container" style='-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;'
  unselectable='on'
  onselectstart='return false;' 
  onmousedown='return false;'>
-<img src="symbiotic_logo_button.png" alt="" width="100" height="50" id="image2"/>
-<p id="text2">Games</p>
+<img src="https://raw.githubusercontent.com/Blyd/simbiotic_website_heroku/master/resources/images/symbiotic_logo_button.png" alt="" width="100" height="50" id="image"/>
+<p class="text">Games</p>
 </div>
 </a>
 <div style = "float:left;height:50px;
@@ -68,13 +88,17 @@ div.inline {  }
  unselectable='on'
  onselectstart='return false;' 
  onmousedown='return false;'> 
-    <img id="image" src="symbiotic_logo_button.png" width="140" height="50" alt=""/>
-<p id="text">Contact us</p>
+    <img class="image" src="https://raw.githubusercontent.com/Blyd/simbiotic_website_heroku/master/resources/images/symbiotic_logo_button.png" width="140" height="50" alt=""/>
+<p class="text">Contact us</p>
 </div>
 
 </div>
-
 </div>
+</div>
+
+<div class="text-body">
+    <p>The Simbiotic website is currently under development.</p>
+    <p>If you have any questions or need to talk to a representative, please use the 'Contact Us' button.</p>
 </div>
 
 </body>

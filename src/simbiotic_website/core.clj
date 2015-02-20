@@ -15,13 +15,15 @@
 
 (defn splash []
   {:status 302
-   :headers {"Content-Type" "text/html"}
-   :body visual})
+   ;:headers {"Content-Type" "image/png"} ;text/html
+   :body (slurp (io/resource "simbiotic_Website.html"))})
 
+(comment splash)
 (defroutes app
            (GET "/" []
                 (splash))
-           (GET "/available_Games.html" [] (slurp (io/resource "available_Games.html")))
+           (GET "/available_Games.html" []
+                (slurp (io/resource "available_Games.html")))
            (ANY "*" []
                 (route/not-found (slurp (io/resource "404.html")))))
 
@@ -32,3 +34,7 @@
 ;; For interactive development:
 ;; (.stop server)
 ;; (def server (-main))
+
+(comment (GET "/simbiotic_Website.html" [] (slurp (io/resource "simbiotic_Website.html"))))
+
+(comment (slurp (io/resource "simbiotic_Website.html")))
