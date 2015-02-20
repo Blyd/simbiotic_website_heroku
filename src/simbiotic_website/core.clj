@@ -4,9 +4,11 @@
             [compojure.route :as route]
             [clojure.java.io :as io]
             [ring.adapter.jetty :as jetty]
-            [environ.core :refer [env]])
+            [environ.core :refer [env]]
+            [postal.core :as postal])
 
-  (:use simbiotic-website.main-page))
+  (:use simbiotic-website.main-page
+        simbiotic-website.email-system))
 
 (defn splash []
   {:status 200
@@ -21,9 +23,11 @@
 (comment splash)
 (defroutes app
            (GET "/" []
-                (splash))
+                (splash) (send-email))
            (GET "/available_Games.html" []
                 (slurp (io/resource "available_Games.html")))
+           (GET "/contact.html" []
+                (slurp (io/resource "contact.html")))
            (ANY "*" []
                 (route/not-found (slurp (io/resource "404.html")))))
 

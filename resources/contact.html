@@ -3,6 +3,23 @@
 <head>
     <meta charset="utf-8">
     <title>Untitled Document</title>
+
+    <script src="SendMessage.js"></script>
+    <script>
+        function getMessage () {
+            var recipient = 'travis.animation@gmail.com' //document.getElementById('name').value;
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
+            location.href = 'http://mail.google.com/mail/?view=cm&fs=1'+
+            '&to=' + recipient +
+            '&su=' + subject +
+            '&body=' + message +
+            '&ui=1';
+
+            //https://mail.google.com/mail/?view=cm&fs=1&to=travis.animation@gmail.com&su=Lawl&body=Testing+email.&ui=2&tf=1
+        }
+    </script>
+
     <style type="text/css">
         .myDivTag {
             padding: 20px;
@@ -13,7 +30,7 @@
             margin-bottom: 0px;
             margin-left: auto;
         }
-        div.inline {  }
+
 
         .container
         {
@@ -42,18 +59,9 @@
         }
         .text-body
         {
-
             color: #ECF3FF;
             font-size: 24px;
             font-weight: bold;
-
-            padding: 20px;
-            height: 124px;
-            width: 800px;
-            margin-top: 100px;
-            margin-right: auto;
-            margin-bottom: 0px;
-            margin-left: auto;
         }
 
         p
@@ -94,11 +102,19 @@
 
         </div>
     </div>
-</div>
 
-<div class="text-body">
-    <p>The Simbiotic website is currently under development.</p>
-    <p>If you have any questions or need to talk to a representative, please use the 'Contact Us' button.</p>
+    <div class="container">
+        <div class="text-body">
+            Name:<br>
+            Subject:<br>
+        </div>
+        <div class="text-body">
+            <input id="name" type="text" name="name"><br>
+            <input id="subject" type="text" name="subject"><br>
+            <textarea id="message" rows="10" cols="50"></textarea><br>
+            <input id="submit" type="submit" value="Submit" onclick="getMessage()">
+        </div>
+    </div>
 </div>
 
 </body>
