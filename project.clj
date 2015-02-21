@@ -8,7 +8,10 @@
                            [ring/ring-jetty-adapter "1.2.2"]
                            [environ "0.5.0"]
                            [hiccup "1.0.5"]
-                           [com.draines/postal "1.11.3"]]
+                           ;[com.draines/postal "1.11.3"]
+                           [commons-codec "1.9"]
+                           [javax.mail/mail "1.4.4"
+                            :exclusions [javax.activation/activation]]]
             :min-lein-version "2.0.0"
             :plugins [[environ/environ.lein "0.2.1"]]
             :hooks [environ.leiningen.hooks]

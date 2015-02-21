@@ -4,8 +4,7 @@
             [compojure.route :as route]
             [clojure.java.io :as io]
             [ring.adapter.jetty :as jetty]
-            [environ.core :refer [env]]
-            [postal.core :as postal])
+            [environ.core :refer [env]])
 
   (:use simbiotic-website.main-page
         simbiotic-website.email-system))
@@ -23,7 +22,7 @@
 (comment splash)
 (defroutes app
            (GET "/" []
-                (splash) (send-email))
+                (splash) );(send-email)
            (GET "/available_Games.html" []
                 (slurp (io/resource "available_Games.html")))
            (GET "/contact.html" []
@@ -37,7 +36,7 @@
 
 ;; For interactive development:
 ;; (.stop server)
-;; (def server (-main))
+;; (def my-server (-main))
 
 (comment (GET "/simbiotic_Website.html" [] (slurp (io/resource "simbiotic_Website.html"))))
 
