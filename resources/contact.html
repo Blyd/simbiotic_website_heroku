@@ -58,6 +58,7 @@
         }
         .text-body
         {
+            margin-top: 100px;
             color: #ECF3FF;
             font-size: 24px;
             font-weight: bold;
@@ -101,18 +102,17 @@
         </div>
     </div>
 
-    <div class="container">
+
         <div class="text-body">
-            Name:<br>
-            Subject:<br>
+            <form method="post" class="text-body">
+                Name:<input id="name" type="text" name="name"><br>
+                Your email:<input id="email" type="text" name="name"><br>
+                Subject:<input id="subject" type="text" name="subject"><br>
+                <textarea id="message" name="body" rows="10" cols="50"></textarea><br>
+                <input id="submit" type="submit" value="Submit" onclick="getMessage()"><br>
+            </form>
         </div>
-        <form method="post" class="text-body">
-            <input id="name" type="text" name="name"><br>
-            <input id="subject" type="text" name="subject"><br>
-            <textarea id="message" name="body" rows="10" cols="50"></textarea><br>
-            <input id="submit" type="submit" value="Submit" onclick="getMessage()">
-        </form>
-    </div>
+
 </div>
 
 </body>

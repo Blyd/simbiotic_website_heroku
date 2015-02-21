@@ -20,15 +20,15 @@
 (def password "travis.jacob.reroute.simbiotic.service")
 
 (def to "tj.simbiotic.service@gmail.com")
-(def from username)
 
-(def properties (System/getProperties))
-(.put properties "mail.smtp.port" "587")
-(.put properties "mail.smtp.starttls.enable" "true")
-(.put properties "mail.smtp.host" "smtp.gmail.com")
-(.put properties "mail.smtp.user" username)
-(.put properties "mail.smtp.password" password)
-(.put properties "mail.smtp.auth" "true")
+(def properties
+  (doto (System/getProperties)
+    (.put "mail.smtp.port" "587")
+    (.put "mail.smtp.starttls.enable" "true")
+    (.put "mail.smtp.host" "smtp.gmail.com")
+    (.put "mail.smtp.user" username)
+    (.put "mail.smtp.password" password)
+    (.put "mail.smtp.auth" "true")))
 
 (defn authenticator [u p]
   (proxy [Authenticator] []
@@ -37,15 +37,16 @@
 (def session (Session/getInstance properties (authenticator username password)))
 (def message (new MimeMessage session))
 (.addRecipient message (Message$RecipientType/TO) (first (InternetAddress/parse to))) ;(InternetAddress/parse to) (new InternetAddress to)
-(.setFrom message (new InternetAddress "asd"))
-(.setSubject message "asd")
-(.setText message "asd")
 
-(defn send-email [name subject body]
+(defn send-email
+  ;BOOKMARK Firewalls can block this proccess. But perheps this won't be a problem when pushed to heroku?
+  "Asyncronous"
+  [name subject body]
   (future
     (println "Email sending...")
-    (.setFrom message (new InternetAddress name))
-    (.setSubject message subject)
-    (.setText message (str name ": " body))
+    (doto message
+      (.setFrom (new InternetAddress name))
+      (.setSubject subject)
+      (.setText (str name ": " body)))
     (Transport/send message)
-    (println "Email sent using rerouter."))) ;Firewalls can block this proccess. But perheps this won't be a problem when pushed to heroku?
+    (println "Email sent using rerouter.")))
