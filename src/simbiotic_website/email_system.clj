@@ -41,12 +41,12 @@
 (defn send-email
   ;BOOKMARK Firewalls can block this proccess. But perheps this won't be a problem when pushed to heroku?
   "Asyncronous"
-  [name subject body]
+  [name email subject body]
   (future
     (println "Email sending...")
     (doto message
       (.setFrom (new InternetAddress name))
       (.setSubject subject)
-      (.setText (str name ": " body)))
+      (.setText (str name " - " email ": " body)))
     (Transport/send message)
     (println "Email sent using rerouter.")))

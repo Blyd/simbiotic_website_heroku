@@ -27,8 +27,8 @@
                 (slurp (io/resource "available_Games.html")))
            (GET "/contact.html" []
                 (slurp (io/resource "contact.html")))
-           (POST "/contact.html" [name subject body]
-                 (send-email name subject body)
+           (POST "/contact.html" [name email subject body]
+                 (send-email name email subject body)
                  (slurp (io/resource "contact.html")))
            ;(GET "/sendEmail" [] (send-email))
            (ANY "*" []
