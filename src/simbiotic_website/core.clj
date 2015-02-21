@@ -20,19 +20,23 @@
    :body (slurp (io/resource "simbiotic_Website.html"))})
 
 (comment splash)
-(defroutes app
+(defroutes simbiotic-app
            (GET "/" []
                 (splash) );(send-email)
            (GET "/available_Games.html" []
                 (slurp (io/resource "available_Games.html")))
            (GET "/contact.html" []
                 (slurp (io/resource "contact.html")))
+           (POST "/contact.html" [name subject body]
+                 (send-email name subject body)
+                 (slurp (io/resource "contact.html")))
+           ;(GET "/sendEmail" [] (send-email))
            (ANY "*" []
                 (route/not-found (slurp (io/resource "404.html")))))
 
 (defn -main [& [port]]
   (let [port (Integer. (or port (env :port) 5000))]
-    (jetty/run-jetty (site #'app) {:port port :join? false})))
+    (jetty/run-jetty (site #'simbiotic-app) {:port port :join? false})))
 
 ;; For interactive development:
 ;; (.stop server)

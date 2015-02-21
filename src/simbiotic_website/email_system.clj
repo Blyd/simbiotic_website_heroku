@@ -1,4 +1,11 @@
 (ns simbiotic-website.email-system
+  (:require [compojure.core :refer [defroutes GET PUT POST DELETE ANY]]
+            [compojure.handler :refer [site]]
+            [compojure.route :as route]
+            [clojure.java.io :as io]
+            [ring.adapter.jetty :as jetty]
+            [environ.core :refer [env]])
+
   (:import (javax.mail
              Authenticator
              PasswordAuthentication
@@ -9,24 +16,19 @@
              MimeMessage
              InternetAddress)))
 
-(def to "travis.akablyd@hotmail.com")
-(def from "javaxmailtestemail@gmail.com")
+(def username "tjrr.simbiotic@gmail.com")
+(def password "travis.jacob.reroute.simbiotic.service")
+
+(def to "tj.simbiotic.service@gmail.com")
+(def from username)
 
 (def properties (System/getProperties))
 (.put properties "mail.smtp.port" "587")
 (.put properties "mail.smtp.starttls.enable" "true")
 (.put properties "mail.smtp.host" "smtp.gmail.com")
-(.put properties "mail.smtp.user" "javaxmailtestemail@gmail.com")
-(.put properties "mail.smtp.password" "javaxmail")
+(.put properties "mail.smtp.user" username)
+(.put properties "mail.smtp.password" password)
 (.put properties "mail.smtp.auth" "true")
-
-
-
-
-(def username "javaxmailtestemail@gmail.com")
-(def password "javaxmail")
-;(def host "localhost")
-;(.setProperty properties "mail.smtp.host" host)
 
 (defn authenticator [u p]
   (proxy [Authenticator] []
@@ -34,13 +36,16 @@
         (new PasswordAuthentication u p))))
 (def session (Session/getInstance properties (authenticator username password)))
 (def message (new MimeMessage session))
-(.setFrom message (new InternetAddress from))
 (.addRecipient message (Message$RecipientType/TO) (first (InternetAddress/parse to))) ;(InternetAddress/parse to) (new InternetAddress to)
-(.setSubject message "This is the Subject line")
-(.setText message "This is the message")
+(.setFrom message (new InternetAddress "asd"))
+(.setSubject message "asd")
+(.setText message "asd")
 
-
-
-
-(defn send-email []
-  (Transport/send message)) ;Firewalls can block this proccess. But perheps this won't be a problem when pushed to heroku?
+(defn send-email [name subject body]
+  (future
+    (println "Email sending...")
+    (.setFrom message (new InternetAddress name))
+    (.setSubject message subject)
+    (.setText message (str name ": " body))
+    (Transport/send message)
+    (println "Email sent using rerouter."))) ;Firewalls can block this proccess. But perheps this won't be a problem when pushed to heroku?

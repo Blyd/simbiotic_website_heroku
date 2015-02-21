@@ -3,11 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>Untitled Document</title>
-
-    <script src="SendMessage.js"></script>
     <script>
         function getMessage () {
-            var recipient = 'javaxmailtestemail@gmail.com' //document.getElementById('name').value;
+            var recipient = document.getElementById('name').value; //document.getElementById('name').value;
             var subject = document.getElementById('subject').value;
             var message = document.getElementById('message').value;
 
@@ -79,7 +77,6 @@
         <img src="https://raw.githubusercontent.com/Blyd/simbiotic_website_heroku/master/resources/images/symbiotic_logo_scaled.png" width="600" height="187" alt=""/>
 
         <div style="position:relative;right:-85px;top:-45px;">
-
             <a href="available_Games.html">
                 <div class="container" style='-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;'
                      unselectable='on'
@@ -109,12 +106,12 @@
             Name:<br>
             Subject:<br>
         </div>
-        <div class="text-body">
+        <form method="post" class="text-body">
             <input id="name" type="text" name="name"><br>
             <input id="subject" type="text" name="subject"><br>
-            <textarea id="message" rows="10" cols="50"></textarea><br>
+            <textarea id="message" name="body" rows="10" cols="50"></textarea><br>
             <input id="submit" type="submit" value="Submit" onclick="getMessage()">
-        </div>
+        </form>
     </div>
 </div>
 
